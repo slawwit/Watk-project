@@ -1,5 +1,5 @@
 .idea/
-# Django #
+## Django #
 *.log
 *.pot
 *.pyc
