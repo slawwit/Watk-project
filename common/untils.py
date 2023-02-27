@@ -1,4 +1,7 @@
+import os
 from django.core.mail import send_mail
+#from dotenv import load_dotenv
+#load_dotenv()
 
 
 def send_my_email(dostawca, user_login, user_email, station):
@@ -12,6 +15,6 @@ def send_my_email(dostawca, user_login, user_email, station):
                             Dostawę dodał/a użytkownik - %s .
                             """ % (dostawca, station, user_login)
     responder_email = 'dostawy_watkem@slawekwitek.smallhost.pl'
-    admin_address = 'slawwit@vp.pl'
+    admin_address = os.environ.get('ADMIN_ADDRES')
     email_two = user_email
     send_mail(tytul_email, message, responder_email, [admin_address, email_two])
