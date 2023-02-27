@@ -14,7 +14,7 @@ def send_my_email(dostawca, user_login, user_email, station):
                             Miłego dnia :)
                             Dostawę dodał/a użytkownik - %s .
                             """ % (dostawca, station, user_login)
-    responder_email = 'dostawy_watkem@slawekwitek.smallhost.pl'
+    responder_email = os.environ.get('EMAIL_HOST_USER')
     admin_address = os.environ.get('ADMIN_ADDRES')
     email_two = user_email
     send_mail(tytul_email, message, responder_email, [admin_address, email_two])
