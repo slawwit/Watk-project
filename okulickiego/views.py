@@ -1,7 +1,7 @@
 from rest_framework import viewsets, permissions
 from okulickiego.serializers import LicznikBazowyOkulickiegoSerializer
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.core.paginator import Paginator
 from .forms import StanPaliwSaveForm
@@ -48,6 +48,20 @@ def dostawy_details(request, stany_id):
         context = {'stan': stan, 'liczniki': liczniki}
         return render(request, 'okulickiego/dostawy_details.html', context)
     return redirect(reverse('login'))
+
+
+def edit_dostawy(request, stany_id):
+    dostawa = get_object_or_404(DostawaOkulickiego, pk=stany_id)
+    liczniki = LicznikDostawyOkulickiego.objects.filter(number=stany_id).order_by("ID_DYS", "ID_WAZ")
+    if request.method == "POST":
+        form = StanPaliwSaveForm(request.POST, instance=dostawa)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse("okulickiego:dost_okuli"))
+    else:
+        form = StanPaliwSaveForm(instance=dostawa)
+    context = {'lista': dostawa, 'liczniki': liczniki, 'form': form}
+    return render(request, 'okulickiego/liczniki_add.html', context)
 
 
 @login_required
