@@ -3,11 +3,16 @@ from dotenv import load_dotenv
 from os import environ
 import requests
 import webbrowser
+import yaml
 
+with open('config.yml', 'r') as file:
+    credensials = yaml.safe_load(file)
+
+    for credensial in credensials['database']:
+        host = credensial['host_ip']
+        database = credensial['path_database']
 
 load_dotenv()
-host = environ.get('HOST_LICZ')
-database = environ.get('DATABASE_LICZ')
 station_name = environ.get('STATION')
 password = environ.get('PASS_LICZ')
 url = environ.get('URL')
