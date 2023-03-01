@@ -4,8 +4,8 @@ from django.core.mail import send_mail
 #load_dotenv()
 
 
-def send_my_email(dostawca, user_login, user_email, station):
-    tytul_email = f'Dostawa {station} - {dostawca}'
+def send_my_email(dostawca, user_login, user_email, user_firstname, user_lastname):
+    tytul_email = f'Dostawa {user_lastname} - {dostawca}'
     message = """
                             Witam!!
 
@@ -13,7 +13,7 @@ def send_my_email(dostawca, user_login, user_email, station):
                             Wejdź i sprawdź https://slawekwitek.smallhost.pl/
                             Miłego dnia :)
                             Dostawę dodał/a użytkownik - %s .
-                            """ % (dostawca, station, user_login)
+                            """ % (dostawca, user_lastname, user_firstname)
     responder_email = os.environ.get('EMAIL_HOST_USER')
     admin_address = os.environ.get('ADMIN_ADDRES')
     email_two = user_email

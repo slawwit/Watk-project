@@ -50,6 +50,8 @@ def dostawy_details(request, stany_id):
     return redirect(reverse('login'))
 
 
+@login_required
+@permission_required('okulickiego.change_dostawaokulickiego')
 def edit_dostawy(request, stany_id):
     dostawa = get_object_or_404(DostawaOkulickiego, pk=stany_id)
     liczniki = LicznikDostawyOkulickiego.objects.filter(number=stany_id).order_by("ID_DYS", "ID_WAZ")
@@ -97,7 +99,7 @@ def handle_licz(request):
                                                                      number=lista)
                         messages.success(request, 'Dostawa została zapisana w bazie.')
                         try:
-                            send_my_email(lista.dostawca, user, user.email, user.last_name)
+                            send_my_email(lista.dostawca, user, user.email, user.first_name, user.last_name)
                             messages.success(request, 'Powiadomienie dodania dostawy zostało wysłane na email.')
                         except:
                             messages.warning(request, 'Powiadomienie dodania dostawy nie zostało wysłane na email.')
