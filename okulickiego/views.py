@@ -8,7 +8,7 @@ from .forms import StanPaliwSaveForm
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import DostawaOkulickiego, LicznikDostawyOkulickiego, LicznikBazowyOkulickiego
 from django.contrib import messages
-from common.untils import send_my_email
+from common.untils import send_my_email, send_my_email_modified
 
 
 @login_required
@@ -41,11 +41,13 @@ def dostawy_list(request):
 def dostawy_details(request, stany_id):
     if request.user.is_authenticated:
         stan = DostawaOkulickiego.objects.get(number=stany_id)
+        created = stan.created.ctime()
+        modified = stan.modified.ctime()
         liczniki = LicznikDostawyOkulickiego.objects.filter(number=stany_id).order_by("ID_DYS", "ID_WAZ")
         q = request.GET.get("qre")
         if q:
             liczniki = liczniki.filter(SYMBOL__icontains=q)
-        context = {'stan': stan, 'liczniki': liczniki}
+        context = {'stan': stan, 'liczniki': liczniki, 'created': created, 'modified': modified}
         return render(request, 'okulickiego/dostawy_details.html', context)
     return redirect(reverse('login'))
 
@@ -53,17 +55,27 @@ def dostawy_details(request, stany_id):
 @login_required
 @permission_required('okulickiego.change_dostawaokulickiego')
 def edit_dostawy(request, stany_id):
-    dostawa = get_object_or_404(DostawaOkulickiego, pk=stany_id)
-    liczniki = LicznikDostawyOkulickiego.objects.filter(number=stany_id).order_by("ID_DYS", "ID_WAZ")
-    if request.method == "POST":
-        form = StanPaliwSaveForm(request.POST, instance=dostawa)
-        if form.is_valid():
-            form.save()
-        return HttpResponseRedirect(reverse("okulickiego:dost_okuli"))
-    else:
-        form = StanPaliwSaveForm(instance=dostawa)
-    context = {'lista': dostawa, 'liczniki': liczniki, 'form': form}
-    return render(request, 'okulickiego/liczniki_add.html', context)
+    if request.user.is_authenticated:
+        user = request.user
+        dostawa = get_object_or_404(DostawaOkulickiego, pk=stany_id)
+        liczniki = LicznikDostawyOkulickiego.objects.filter(number=stany_id).order_by("ID_DYS", "ID_WAZ")
+        if request.method == "POST":
+            form = StanPaliwSaveForm(request.POST, instance=dostawa)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Poprawa dostawa została zapisana w bazie.')
+                try:
+                    send_my_email_modified(dostawa.number, user.email, user.first_name, user.last_name)
+                    messages.success(request, 'Powiadomienie edycji dostawy zostało wysłane na email.')
+
+                except:
+                    messages.warning(request, 'Powiadomienie edycji dostawy nie zostało wysłane na email.')
+            return HttpResponseRedirect(reverse("okulickiego:dost_okuli"))
+        else:
+            form = StanPaliwSaveForm(instance=dostawa)
+        context = {'lista': dostawa, 'liczniki': liczniki, 'form': form}
+        return render(request, 'okulickiego/liczniki_add.html', context)
+    return redirect(reverse('login'))
 
 
 @login_required
@@ -99,7 +111,7 @@ def handle_licz(request):
                                                                      number=lista)
                         messages.success(request, 'Dostawa została zapisana w bazie.')
                         try:
-                            send_my_email(lista.dostawca, user, user.email, user.first_name, user.last_name)
+                            send_my_email(lista.dostawca, user.email, user.first_name, user.last_name)
                             messages.success(request, 'Powiadomienie dodania dostawy zostało wysłane na email.')
                         except:
                             messages.warning(request, 'Powiadomienie dodania dostawy nie zostało wysłane na email.')

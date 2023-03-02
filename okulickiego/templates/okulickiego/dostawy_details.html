@@ -8,7 +8,10 @@
     <div class="row">
         <div class="col-md-9">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-mb-between py-3 mb-2 border-bottom">
-                <h2 class="d-flex">Dostawa {{ stan.created }} Okulickiego - ({{stan.dostawca}})</h2>
+                <h2 class="d-flex">Dostawa {{ stan.created | date:"j E Y H:i:s"}} Okulickiego - ({{stan.dostawca}})</h2>
+                {% if created != modified %}
+                    <h3 class="d-flex">Zmodyfikowane {{ stan.modified | date:"j E Y H:i:s" }}</h3>
+                {% endif %}
             </div>
             <div class="mb-3 border-bottom">
                 <a type="button" class="btn btn-primary mb-2" href="{% url 'okulickiego:edit_dost' stan.number %}">Edytuj</a>

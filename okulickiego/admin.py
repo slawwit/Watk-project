@@ -9,7 +9,7 @@ class LiczBazOkuli(admin.ModelAdmin):
 
 @admin.register(DostawaOkulickiego)
 class DostOkuliAdmin(admin.ModelAdmin):
-    list_display = ['number', 'created']
+    list_display = ['number', 'created', 'modified']
 
 
 @admin.register(LicznikDostawyOkulickiego)
