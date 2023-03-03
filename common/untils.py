@@ -26,7 +26,7 @@ def send_my_email_modified(dostawa_number, user_email, user_firstname, user_last
                             Zmodyfikowano dostawę numer %s na stacji paliw %s .
                             Wejdź i sprawdź https://slawekwitek.smallhost.pl/
                             Miłego dnia :)
-                            Dostawę zmyfikował użytkownik - %s .
+                            Dostawę edytował użytkownik - %s .
                             """ % (dostawa_number, user_lastname, user_firstname)
     responder_email = os.environ.get('EMAIL_HOST_USER')
     admin_address = os.environ.get('ADMIN_ADDRES')
