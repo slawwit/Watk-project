@@ -2,8 +2,8 @@ import os
 from django.core.mail import send_mail
 
 
-def send_my_email(dostawca, user_email, user_firstname, user_lastname):
-    tytul_email = f'Dostawa {user_lastname} - {dostawca}'
+def send_my_email(dostawca, user_email, user_firstname, name_stacji ):
+    tytul_email = f'Dostawa {name_stacji} - {dostawca}'
     message = """
     Witam!!
 
@@ -11,15 +11,15 @@ def send_my_email(dostawca, user_email, user_firstname, user_lastname):
     Wejdź i sprawdź https://slawekwitek.smallhost.pl/
     Miłego dnia :)
     Dostawę dodał/a użytkownik - %s .
-    """ % (dostawca, user_lastname, user_firstname)
+    """ % (dostawca, name_stacji, user_firstname)
     responder_email = os.environ.get('EMAIL_HOST_USER')
     admin_address = os.environ.get('ADMIN_ADDRES')
     email_two = user_email
     send_mail(tytul_email, message, responder_email, [admin_address, email_two])
 
 
-def send_my_email_modified(dostawa_number, user_email, user_firstname, user_lastname):
-    tytul_email = f'Uwaga zmodyfikowano dostawę numer {dostawa_number} stacja {user_lastname}'
+def send_my_email_modified(dostawa_number, user_email, user_firstname, name_stacji):
+    tytul_email = f'Uwaga zmodyfikowano dostawę numer {dostawa_number} stacja {name_stacji}'
     message = """
     Uwaga!!
 
@@ -27,7 +27,7 @@ def send_my_email_modified(dostawa_number, user_email, user_firstname, user_last
     Wejdź i sprawdź https://slawekwitek.smallhost.pl/
     Miłego dnia :)
     Dostawę edytował użytkownik - %s .
-    """ % (dostawa_number, user_lastname, user_firstname)
+    """ % (dostawa_number, name_stacji, user_firstname)
     responder_email = os.environ.get('EMAIL_HOST_USER')
     admin_address = os.environ.get('ADMIN_ADDRES')
     email_two = user_email

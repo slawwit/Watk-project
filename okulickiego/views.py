@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator
 from .forms import StanPaliwSaveForm
 from django.contrib.auth.decorators import login_required, permission_required
-from .models import DostawaOkulickiego, LicznikDostawyOkulickiego, LicznikBazowyOkulickiego
+from .models import DostawaOkulickiego, LicznikDostawyOkulickiego, LicznikBazowyOkulickiego, DaneStacjiOkulickiego
 from django.contrib import messages
 from common.untils import send_my_email, send_my_email_modified
 
@@ -57,6 +57,7 @@ def dostawy_details(request, stany_id):
 def edit_dostawy(request, stany_id):
     if request.user.is_authenticated:
         user = request.user
+        name_stacji = get_object_or_404(DaneStacjiOkulickiego)
         dostawa = get_object_or_404(DostawaOkulickiego, pk=stany_id)
         liczniki = LicznikDostawyOkulickiego.objects.filter(number=stany_id).order_by("ID_DYS", "ID_WAZ")
         if request.method == "POST":
@@ -65,7 +66,7 @@ def edit_dostawy(request, stany_id):
                 form.save()
                 messages.success(request, 'Poprawa dostawa została zapisana w bazie.')
                 try:
-                    send_my_email_modified(dostawa.number, user.email, user.first_name, user.last_name)
+                    send_my_email_modified(dostawa.number, user.email, user.first_name, name_stacji)
                     messages.success(request, 'Powiadomienie edycji dostawy zostało wysłane na email.')
 
                 except:
@@ -84,6 +85,7 @@ def handle_licz(request):
     if request.user.is_authenticated:
         liczniki = LicznikBazowyOkulickiego.objects.order_by("ID_DYS", "ID_WAZ")
         num = DostawaOkulickiego.objects.last()
+        name_stacji = get_object_or_404(DaneStacjiOkulickiego)
         lista = []
         if not num:
             num = 1
@@ -111,7 +113,7 @@ def handle_licz(request):
                                                                      number=lista)
                         messages.success(request, 'Dostawa została zapisana w bazie.')
                         try:
-                            send_my_email(lista.dostawca, user.email, user.first_name, user.last_name)
+                            send_my_email(lista.dostawca, user.email, user.first_name, name_stacji)
                             messages.success(request, 'Powiadomienie dodania dostawy zostało wysłane na email.')
                         except:
                             messages.warning(request, 'Powiadomienie dodania dostawy nie zostało wysłane na email.')

@@ -1,6 +1,15 @@
 from django.db import models
 
 
+class DaneStacji(models.Model):
+    skr_nazwa = models.CharField(max_length=100)
+    nazwa = models.CharField(max_length=250)
+    adrres = models.CharField(max_length=250)
+
+    class Meta:
+        abstract = True
+
+
 class LicznikBaza(models.Model):
     ID_DYS = models.PositiveSmallIntegerField()
     ID_WAZ = models.PositiveSmallIntegerField()

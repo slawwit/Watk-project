@@ -1,5 +1,11 @@
 from django.db import models
-from common.models import LicznikBaza, DostawaAbst, PaliwoDostAbst, Dostawcy
+from common.models import LicznikBaza, PaliwoDostAbst, Dostawcy, DaneStacji
+
+
+class DaneStacjiOkulickiego(DaneStacji):
+
+    def __str__(self):
+        return f'{self.skr_nazwa}'
 
 
 class LicznikBazowyOkulickiego(LicznikBaza):
