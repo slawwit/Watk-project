@@ -102,7 +102,6 @@ def handle_licz(request):
                         form_st.save()
                         lista = DostawaOkulickiego.objects.get(number=num)
                         for licz in liczniki:
-                            print(licz.ARTYKUL)
                             LicznikDostawyOkulickiego.objects.create(ID_DYS=licz.ID_DYS,
                                                                      ID_WAZ=licz.ID_WAZ,
                                                                      SYMBOL=licz.SYMBOL,
