@@ -17,15 +17,19 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
-                  path('', include("main.urls")),
-                  path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-                  path('okulickiego/', include('okulickiego.urls')),
-                  path('armii/', include('armii.urls')),
-                  path('accounts/', include('django.contrib.auth.urls')),
-                  path('', include('register.urls')),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
+    path('admin/', admin.site.urls),
+    path('', include("main.urls")),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('okulickiego/', include('okulickiego.urls')),
+    path('rudna/', include('rudna.urls')),
+    path('armii/', include('armii.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('register.urls')),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon/favicon.ico'))),
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
               + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

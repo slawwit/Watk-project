@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'okulickiego.apps.OkulickiegoConfig',
     'armii.apps.ArmiiConfig',
     'common.apps.CommonConfig',
+    'rudna.apps.RudnaConfig',
 ]
 
 MIDDLEWARE = [
