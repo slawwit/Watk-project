@@ -66,7 +66,7 @@ def edit_dostawy(request, stany_id):
                 form.save()
                 messages.success(request, 'Poprawa dostawa została zapisana w bazie.')
                 try:
-                    send_my_email_modified(dostawa.number, user.email, user.first_name, name_stacji)
+                    send_my_email_modified(dostawa.number, user.first_name, name_stacji)
                     messages.success(request, 'Powiadomienie edycji dostawy zostało wysłane na email.')
 
                 except:
@@ -112,7 +112,7 @@ def handle_licz(request):
                                                                      number=lista)
                         messages.success(request, 'Dostawa została zapisana w bazie.')
                         try:
-                            send_my_email(lista.dostawca, user.email, user.first_name, name_stacji)
+                            send_my_email(lista.dostawca, user.first_name, name_stacji)
                             messages.success(request, 'Powiadomienie dodania dostawy zostało wysłane na email.')
                         except:
                             messages.warning(request, 'Powiadomienie dodania dostawy nie zostało wysłane na email.')

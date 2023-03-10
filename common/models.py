@@ -5,6 +5,7 @@ class DaneStacji(models.Model):
     skr_nazwa = models.CharField(max_length=100)
     nazwa = models.CharField(max_length=250)
     adrres = models.CharField(max_length=250)
+    adress_email = models.EmailField(max_length=254, default='slawomirwitek@watkem.pl')
 
     class Meta:
         abstract = True

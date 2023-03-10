@@ -2,7 +2,7 @@ import os
 from django.core.mail import send_mail
 
 
-def send_my_email(dostawca, user_email, user_firstname, name_stacji ):
+def send_my_email(dostawca, user_firstname, name_stacji ):
     tytul_email = f'Dostawa {name_stacji} - {dostawca}'
     message = """
     Witam!!
@@ -14,11 +14,10 @@ def send_my_email(dostawca, user_email, user_firstname, name_stacji ):
     """ % (dostawca, name_stacji, user_firstname)
     responder_email = os.environ.get('EMAIL_HOST_USER')
     admin_address = os.environ.get('ADMIN_ADDRES')
-    email_two = user_email
-    send_mail(tytul_email, message, responder_email, [admin_address, email_two])
+    send_mail(tytul_email, message, responder_email, [admin_address, name_stacji.adress_email])
 
 
-def send_my_email_modified(dostawa_number, user_email, user_firstname, name_stacji):
+def send_my_email_modified(dostawa_number, user_firstname, name_stacji):
     tytul_email = f'Uwaga zmodyfikowano dostawę numer {dostawa_number} stacja {name_stacji}'
     message = """
     Uwaga!!
@@ -30,5 +29,4 @@ def send_my_email_modified(dostawa_number, user_email, user_firstname, name_stac
     """ % (dostawa_number, name_stacji, user_firstname)
     responder_email = os.environ.get('EMAIL_HOST_USER')
     admin_address = os.environ.get('ADMIN_ADDRES')
-    email_two = user_email
-    send_mail(tytul_email, message, responder_email, [admin_address, email_two])
+    send_mail(tytul_email, message, responder_email, [admin_address, name_stacji.adress_email])
