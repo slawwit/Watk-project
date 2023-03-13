@@ -1,12 +1,12 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit
 from django import forms
-from .models import DostawaRudna
+from .models import DostawaWola
 
 
 class StanPaliwSaveForm(forms.ModelForm):
     class Meta:
-        model = DostawaRudna
+        model = DostawaWola
         fields = ['dostawca', 'number', 'zb_98', 'zb_95', 'zb_on', 'zb_ontir', 'zb_lpg', 'zb_adblue']
         labels = {
                     "dostawca": 'Dostawca',

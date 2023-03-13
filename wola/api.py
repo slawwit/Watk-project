@@ -19,12 +19,12 @@ class UserAuthentication(ObtainAuthToken):
 
 class LiczList(APIView):
     def get(self, request):
-        model = LicznikBazowyRudna.objects.all()
-        serializer = LicznikBazowyRudnaSerializer(model, many=True)
+        model = LicznikBazowyWola.objects.all()
+        serializer = LicznikBazowyWolaSerializer(model, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = LicznikBazowyRudnaSerializer(data=request.data)
+        serializer = LicznikBazowyWolaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

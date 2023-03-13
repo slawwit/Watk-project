@@ -4,32 +4,6 @@ from django import forms
 from .models import DostawaArmii
 
 
-# class LiczSaveForm(forms.Form):
-#     numer_zam = forms.IntegerField(label='Numer Dostawy')
-#
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.helper = FormHelper()
-#         self.helper.form_method = 'post'
-#         self.helper.add_input(Submit('licz_save', 'Zapisz'))
-#
-#
-# class LoadLiczniki(forms.Form):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.helper = FormHelper()
-#         self.helper.form_method = 'post'
-#         self.helper.add_input(Submit('load_licz', 'Załaduj liczniki'))
-
-
-# class StanPaliwCancelForm(forms.Form):
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self.helper = FormHelper()
-#         self.helper.form_method = 'post'
-#         self.helper.add_input(Submit('stan_cancel', 'Anuluj', css_class='btn btn-secondary'))
-
-
 class StanPaliwSaveForm(forms.ModelForm):
     class Meta:
         model = DostawaArmii

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'armii.apps.ArmiiConfig',
     'common.apps.CommonConfig',
     'rudna.apps.RudnaConfig',
+    'wola.apps.WolaConfig',
 ]
 
 MIDDLEWARE = [

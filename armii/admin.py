@@ -3,7 +3,7 @@ from .models import DostawaArmii, LicznikBazowyArmii, LicznikDostawyArmii, DaneS
 
 
 @admin.register(DaneStacjiArmii)
-class DaneStacOkuli(admin.ModelAdmin):
+class DaneStacArmii(admin.ModelAdmin):
     list_display = ['skr_nazwa', 'nazwa']
 
 

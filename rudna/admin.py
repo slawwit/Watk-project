@@ -3,22 +3,22 @@ from .models import DostawaRudna, LicznikBazowyRudna, LicznikDostawyRudna, DaneS
 
 
 @admin.register(DaneStacjiRudna)
-class DaneStacOkuli(admin.ModelAdmin):
+class DaneStacRudna(admin.ModelAdmin):
     list_display = ['skr_nazwa', 'nazwa']
 
 
 @admin.register(LicznikBazowyRudna)
-class LiczBazOkuli(admin.ModelAdmin):
+class LiczBazRudna(admin.ModelAdmin):
     list_display = ['id', 'ID_DYS', 'SYMBOL', 'KIEDY', 'KIEDY_WGR']
 
 
 @admin.register(DostawaRudna)
-class DostOkuliAdmin(admin.ModelAdmin):
+class DostRudnaAdmin(admin.ModelAdmin):
     list_display = ['number', 'created', 'modified']
 
 
 @admin.register(LicznikDostawyRudna)
-class LiczDostOkuliAdmin(admin.ModelAdmin):
+class LiczDostRudnaAdmin(admin.ModelAdmin):
     list_display = ['id', 'number']
 
 

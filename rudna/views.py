@@ -1,5 +1,5 @@
 from rest_framework import viewsets, permissions
-from rudna.serializers import LicznikBazowyRudnaSerializer
+from .serializers import LicznikBazowyRudnaSerializer
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
