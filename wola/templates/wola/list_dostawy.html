@@ -1,4 +1,4 @@
-{% extends 'okulickiego/base2.html' %}
+{% extends 'wola/base2.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block styles %}{% endblock %}
@@ -17,11 +17,11 @@
                         {% endfor %}
                         {% endif %}
             </div>
-            <h2>Lista zapisanych dostaw z licznikami Okulickiego</h2>
+            <h2>Lista zapisanych dostaw z licznikami Wola</h2>
             <ul class="list-group">
                 {% for list in lista %}
                     <li class="list-group-item"><a class="list-group-item list-group-item-action list-group-item-primary"
-                                                   href="{% url 'okulickiego:details_dost' list.number %}">
+                                                   href="{% url 'wola:details_dost' list.number %}">
                         Dostawa {{ list.created }} ({{ list.number }}) - ({{list.dostawca}})</a>
                     </li>
                 {% endfor %}

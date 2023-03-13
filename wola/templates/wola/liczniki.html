@@ -1,11 +1,11 @@
-{% extends 'okulickiego/base2.html' %}
+{% extends 'wola/base2.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block styles %}{% endblock %}
 {% block title %}Liczniki{% endblock %}
 {% block content %}
     <div class="container">
-        <h2>Liczniki Okulickiego</h2>
+        <h2>Liczniki Wola</h2>
 
         <div class="row">
             <div class="col-md-9">
@@ -13,7 +13,7 @@
                     <input type="text" id="qq" name="qre">
                     <input type="submit" value="search" class="btn btn-outline-primary">
                 </form>
-                <a type="button" class="btn btn-primary" href="{% url 'okulickiego:add_liczniki' %}">Dodaj Dostawę</a>
+                <a type="button" class="btn btn-primary" href="{% url 'wola:add_liczniki' %}">Dodaj Dostawę</a>
 
                 <div>
                     <table class="table table-sm table-striped">

@@ -23,6 +23,11 @@
                             class="list-group-item list-group-item-action list-group-item-primary"
                             href="{% url 'rudna:dost_rudna' %}">Rudna</a></li>
                     {% endif %}
+                    {% if perms.wola.view_dostawawola %}
+                    <li class="list-group-item"><a
+                            class="list-group-item list-group-item-action list-group-item-primary"
+                            href="{% url 'wola:dost_wola' %}">Wola</a></li>
+                    {% endif %}
                     {% if perms.armii.view_dostawaarmii %}
                     <li class="list-group-item"><a
                             class="list-group-item list-group-item-action list-group-item-primary"

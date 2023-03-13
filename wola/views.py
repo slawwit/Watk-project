@@ -124,7 +124,7 @@ def handle_licz(request):
     return redirect(reverse('login'))
 
 
-class LicznikBazowyOkulickiegoViewSet(viewsets.ModelViewSet):
+class LicznikBazowyWolaViewSet(viewsets.ModelViewSet):
     queryset = LicznikBazowyWola.objects.all()
     serializer_class = LicznikBazowyWolaSerializer
     permission_classes = [permissions.DjangoModelPermissions, permissions.IsAuthenticated]
