@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import DostawaArmii, LicznikBazowyArmii, LicznikDostawyArmii
+from .models import DostawaArmii, LicznikBazowyArmii, LicznikDostawyArmii, DaneStacjiArmii
+
+
+@admin.register(DaneStacjiArmii)
+class DaneStacOkuli(admin.ModelAdmin):
+    list_display = ['skr_nazwa', 'nazwa']
 
 
 @admin.register(LicznikBazowyArmii)
@@ -9,7 +14,7 @@ class LiczBazArmii(admin.ModelAdmin):
 
 @admin.register(DostawaArmii)
 class DostArmiiAdmin(admin.ModelAdmin):
-    list_display = ['number', 'created']
+    list_display = ['number', 'created', 'modified']
 
 
 @admin.register(LicznikDostawyArmii)

@@ -20,5 +20,3 @@ class DostOkuliAdmin(admin.ModelAdmin):
 @admin.register(LicznikDostawyOkulickiego)
 class LiczDostOkuliAdmin(admin.ModelAdmin):
     list_display = ['id', 'number']
-
-

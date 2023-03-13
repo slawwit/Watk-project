@@ -17,16 +17,16 @@ class UserAuthentication(ObtainAuthToken):
         return Response(token.key)
 
 
-# class LiczList(APIView):
-#     def get(self, request):
-#         model = LicznikBazowyOkulickiego.objects.all()
-#         serializer = LicznikBazowyOkulickiegoSerializer(model, many=True)
-#         return Response(serializer.data)
-#
-#     def post(self, request):
-#         serializer = LicznikBazowyOkulickiegoSerializer(data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class LiczList(APIView):
+    def get(self, request):
+        model = LicznikBazowyArmii.objects.all()
+        serializer = LicznikBazowyArmiiSerializer(model, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        serializer = LicznikBazowyArmiiSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
