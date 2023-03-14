@@ -1,0 +1,80 @@
+{% extends 'rzecha/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block styles %}{% endblock %}
+{% block title %}Dostawa{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-mb-between py-3 mb-2 border-bottom">
+                <h2 class="d-flex">Dostawa {{ stan.created | date:"j E Y H:i:s"}} Rzecha - ({{stan.dostawca}})</h2>
+                {% if created != modified %}
+                    <h3 class="d-flex">Zmodyfikowane {{ stan.modified | date:"j E Y H:i:s" }}</h3>
+                {% endif %}
+            </div>
+            <div class="mb-3 border-bottom">
+                <a type="button" class="btn btn-primary mb-2" href="{% url 'rzecha:edit_dost' stan.number %}">Edytuj</a>
+            </div>
+
+            <table class="table table-sm table-striped">
+                <tr>
+                    <th>PB98</th>
+                    <td>{{ stan.zb_98 }}</td>
+                </tr>
+                <tr>
+                    <th>PB95</th>
+                    <td>{{ stan.zb_95 }}</td>
+                </tr>
+                <tr>
+                    <th>ON</th>
+                    <td>{{ stan.zb_on }}</td>
+                </tr>
+                <tr>
+                    <th>ON TIR</th>
+                    <td>{{ stan.zb_ontir }}</td>
+                </tr>
+                <tr>
+                    <th>LPG</th>
+                    <td>{{ stan.zb_lpg }}</td>
+                </tr>
+                <tr>
+                    <th>ADBLUE</th>
+                    <td>{{ stan.zb_adblue }}</td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+    <form>
+        <input type="text" id="qq" name="qre">
+        <input type="submit" value="Filtruj liczniki" class="btn btn-outline-primary"
+               data-bs-toggle="tooltip" data-bs-placement="bottom" title="Filtrowanie po symbolu">
+    </form>
+    <div>
+        <table class="table table-sm table-striped">
+            <thead>
+                <tr>
+                    <th>NUMER DYST</th>
+                    <th>SYMBOL</th>
+                    <th>LICZNIK</th>
+                    <th>PALIWO</th>
+                    <th>DATA</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for licz in liczniki %}
+                    <tr>
+                        <td>{{ licz.ID_DYS }}</td>
+                        <td>{{ licz.SYMBOL }}</td>
+                        <td>{{ licz.TOTAL }}</td>
+                        <td>{{ licz.ARTYKUL }}</td>
+                        <td>{{ licz.KIEDY }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

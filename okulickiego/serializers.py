@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from okulickiego.models import LicznikBazowyOkulickiego
+from .models import LicznikBazowyOkulickiego
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
