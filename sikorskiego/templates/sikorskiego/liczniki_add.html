@@ -1,0 +1,33 @@
+{% extends 'sikorskiego/base2.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block styles %}{% endblock %}
+{% block title %}Save Dostawy{% endblock %}
+{% block content %}
+    <div class="container">
+        <h2>Dodaj dostawę + Liczniki (Sikorskiego)</h2>
+        <div class="row">
+            <div class="col-sm-6">
+                    <table class="table table-sm table-striped">
+                        <tr>
+                            <th>NUMER DYST</th>
+                            <th>SYMBOL</th>
+                            <th>LICZNIK</th>
+                            <th>DATA LICZ</th>
+                        </tr>
+                    {% for licz in liczniki %}
+                        <tr>
+                            <td>{{ licz.ID_DYS }}</td>
+                            <td>{{ licz.SYMBOL }}</td>
+                            <td>{{ licz.TOTAL }}</td>
+                            <td>{{ licz.KIEDY }}</td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+                <div class="col-sm-4">
+                    {% crispy form %}
+                </div>
+        </div>
+    </div>
+{% endblock %}

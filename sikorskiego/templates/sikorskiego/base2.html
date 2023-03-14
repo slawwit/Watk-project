@@ -1,0 +1,14 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{% endblock %}
+{% block styles %}{% endblock %}
+{% block nav %}
+<li><a class="nav-link px-2 link-secondary" href="{% url 'home' %}">Lista Stacji</a></li>
+<li><a class="nav-link px-2 link-secondary {% if request.resolver_match.view_name == 'sikorskiego:dost_sikorskiego' %}
+link-dark{% endif %}" href="{% url 'sikorskiego:dost_sikorskiego' %}">Lista Dostaw</a></li>
+<li><a class="nav-link px-2 link-secondary {% if request.resolver_match.view_name == 'sikorskiego:liczniki' %}
+link-dark{% endif %}" href="{% url 'sikorskiego:liczniki' %}">Nowa dostawa</a></li>
+{% endblock %}
+{% block content %}
+{% endblock %}
