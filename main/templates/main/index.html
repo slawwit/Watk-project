@@ -33,15 +33,20 @@
                             class="list-group-item list-group-item-action list-group-item-primary"
                             href="{% url 'armii:dost_armii' %}">Armii</a></li>
                     {% endif %}
-                    {% if perms.armii.view_dostawarzecha %}
+                    {% if perms.rzecha.view_dostawarzecha %}
                     <li class="list-group-item"><a
                             class="list-group-item list-group-item-action list-group-item-primary"
                             href="{% url 'rzecha:dost_rzecha' %}">Rzecha</a></li>
                     {% endif %}
-                    {% if perms.armii.view_dostawasikorskiego %}
+                    {% if perms.sikorskiego.view_dostawasikorskiego %}
                     <li class="list-group-item"><a
                             class="list-group-item list-group-item-action list-group-item-primary"
                             href="{% url 'sikorskiego:dost_sikorskiego' %}">Sikorskiego</a></li>
+                    {% endif %}
+                    {% if perms.ostrow.view_dostawaostrow %}
+                    <li class="list-group-item"><a
+                            class="list-group-item list-group-item-action list-group-item-primary"
+                            href="{% url 'ostrow:dost_ostrow' %}">Ostrów</a></li>
                     {% endif %}
 
                 </ul>

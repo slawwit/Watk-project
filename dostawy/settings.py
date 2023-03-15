@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'wola.apps.WolaConfig',
     'rzecha.apps.RzechaConfig',
     'sikorskiego.apps.SikorskiegoConfig',
+    'ostrow.apps.OstrowConfig',
 ]
 
 MIDDLEWARE = [

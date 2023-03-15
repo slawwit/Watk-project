@@ -1,12 +1,11 @@
 from django.urls import path, include
-from .views import licz_list, handle_licz, dostawy_list, dostawy_details, edit_dostawy
+from .views import licz_list, handle_licz, dostawy_list, dostawy_details, edit_dostawy, LicznikBazowySikorskiegoViewSet
 from rest_framework import routers
-from sikorskiego import views
 from .api import UserAuthentication
 
 
 router = routers.DefaultRouter()
-router.register(r'liczniki', views.LicznikBazowySikorskiegoViewSet)
+router.register(r'liczniki', LicznikBazowySikorskiegoViewSet)
 
 
 app_name = "sikorskiego"
