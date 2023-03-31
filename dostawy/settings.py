@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     'ostrow.apps.OstrowConfig',
     'lezajsk.apps.LezajskConfig',
     'jaroslaw.apps.JaroslawConfig',
+    'podkarpacka.apps.PodkarpackaConfig',
 ]
 
 MIDDLEWARE = [

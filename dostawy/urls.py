@@ -34,6 +34,7 @@ urlpatterns = [
     path('ostrow/', include('ostrow.urls')),
     path('lezajsk/', include('lezajsk.urls')),
     path('jaroslaw/', include('jaroslaw.urls')),
+    path('podkarpacka/', include('podkarpacka.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('register.urls')),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('favicon/favicon.ico'))),

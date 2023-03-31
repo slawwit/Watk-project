@@ -58,6 +58,11 @@
                             class="list-group-item list-group-item-action list-group-item-primary"
                             href="{% url 'jaroslaw:dost_jaroslaw' %}">Jarosław</a></li>
                     {% endif %}
+                    {% if perms.podkarpacka.view_dostawapodkarpacka %}
+                    <li class="list-group-item"><a
+                            class="list-group-item list-group-item-action list-group-item-primary"
+                            href="{% url 'podkarpacka:dost_podkarpacka' %}">Podkarpacka</a></li>
+                    {% endif %}
 
                 </ul>
             </div>
