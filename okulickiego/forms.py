@@ -25,7 +25,7 @@ class StanPaliwSaveForm(forms.ModelForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit("stan_save", "Zapisz"))
         # self.helper.add_input(Submit('stan_cancel', 'Anuluj', css_class='btn btn-secondary'))
-        self.fields['number'].widget.attrs
+	# self.fields['number'].widget.attrs
         self.helper.layout = Layout(
             Fieldset(
                 'Zapisz Dostawę',

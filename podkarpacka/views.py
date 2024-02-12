@@ -29,7 +29,7 @@ def licz_list(request):
 def dostawy_list(request):
     if request.user.is_authenticated:
         lista = DostawaPodkarpacka.objects.all().order_by('-number')
-        paginator = Paginator(lista, 6)
+        paginator = Paginator(lista, 12)
         page_number = request.GET.get('page')
         lista_dost = paginator.get_page(page_number)
         return render(request, 'podkarpacka/list_dostawy.html', {'lista': lista_dost})

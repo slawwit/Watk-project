@@ -29,10 +29,9 @@ def licz_list(request):
 def dostawy_list(request):
     if request.user.is_authenticated:
         lista = DostawaOkulickiego.objects.all().order_by('-number')
-        paginator = Paginator(lista, 6)
+        paginator = Paginator(lista, 12)
         page_number = request.GET.get('page')
         lista_dost = paginator.get_page(page_number)
-        pag = range(lista_dost.number-3, lista_dost.number+4)
         return render(request, 'okulickiego/list_dostawy.html', {'lista': lista_dost})
     return redirect(reverse('login'))
 
@@ -100,7 +99,7 @@ def handle_licz(request):
                     form_st.helper.form_action = reverse("okulickiego:add_liczniki")
                     form_st = StanPaliwSaveForm(request.POST)
                     if form_st.is_valid():
-                        form_st.fields['number'].disabled = False
+						#form_st.fields['number'].disabled = False
                         form_st.save()
                         lista = DostawaOkulickiego.objects.get(number=num)
                         for licz in liczniki:

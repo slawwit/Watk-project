@@ -6,6 +6,7 @@
 *.pyc
 __pycache__
 public/media
+public/static
 Dockerfile
 docker-compose.yml
 local_settings.py
