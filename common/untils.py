@@ -8,7 +8,7 @@ def send_my_email(dostawca, user_firstname, name_stacji ):
     Witam!!
 
     Dodano nową dostawę z %s na stacji paliw %s.
-    Wejdź i sprawdź https://slawekwitek.smallhost.pl/
+    Wejdź i sprawdź https://watkem.smallhost.pl/
     Miłego dnia :)
     Dostawę dodał/a użytkownik - %s .
     """ % (dostawca, name_stacji, user_firstname)
@@ -23,7 +23,7 @@ def send_my_email_modified(dostawa_number, user_firstname, name_stacji):
     Uwaga!!
 
     Zmodyfikowano dostawę numer %s na stacji paliw %s .
-    Wejdź i sprawdź https://slawekwitek.smallhost.pl/
+    Wejdź i sprawdź https://watkem.smallhost.pl/
     Miłego dnia :)
     Dostawę edytował użytkownik - %s .
     """ % (dostawa_number, name_stacji, user_firstname)

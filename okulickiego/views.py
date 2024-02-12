@@ -99,7 +99,7 @@ def handle_licz(request):
                     form_st.helper.form_action = reverse("okulickiego:add_liczniki")
                     form_st = StanPaliwSaveForm(request.POST)
                     if form_st.is_valid():
-						#form_st.fields['number'].disabled = False
+                        # form_st.fields['number'].disabled = False
                         form_st.save()
                         lista = DostawaOkulickiego.objects.get(number=num)
                         for licz in liczniki:
