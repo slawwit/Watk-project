@@ -4,7 +4,7 @@ from .models import DostawaPodkarpacka, LicznikBazowyPodkarpacka, LicznikDostawy
 
 @admin.register(DaneStacjiPodkarpacka)
 class DaneStacPodkarpacka(admin.ModelAdmin):
-    list_display = ['skr_nazwa', 'nazwa']
+    list_display = ['skr_nazwa', 'nazwa', 'adress_email']
 
 
 @admin.register(LicznikBazowyPodkarpacka)

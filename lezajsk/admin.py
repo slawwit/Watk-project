@@ -4,7 +4,7 @@ from .models import DostawaLezajsk, LicznikBazowyLezajsk, LicznikDostawyLezajsk,
 
 @admin.register(DaneStacjiLezajsk)
 class DaneStacLezajsk(admin.ModelAdmin):
-    list_display = ['skr_nazwa', 'nazwa']
+    list_display = ['skr_nazwa', 'nazwa', 'adress_email']
 
 
 @admin.register(LicznikBazowyLezajsk)
