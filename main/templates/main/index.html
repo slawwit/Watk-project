@@ -68,6 +68,11 @@
                             class="list-group-item list-group-item-action list-group-item-primary"
                             href="{% url 'jasionka:dost_jasionka' %}">Jasionka</a></li>
                     {% endif %}
+                    {% if perms.warszawska.view_dostawawarszawska %}
+                    <li class="list-group-item"><a
+                            class="list-group-item list-group-item-action list-group-item-primary"
+                            href="{% url 'warszawska:dost_warszawska' %}">Warszawska</a></li>
+                    {% endif %}
 
                 </ul>
             </div>
