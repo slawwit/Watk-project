@@ -60,7 +60,8 @@ INSTALLED_APPS = [
     'lezajsk.apps.LezajskConfig',
     'jaroslaw.apps.JaroslawConfig',
     'podkarpacka.apps.PodkarpackaConfig',
-    'jasionka.apps.JasionkaConfig'
+    'jasionka.apps.JasionkaConfig',
+    'warszawska.apps.WarszawskaConfig'
 ]
 
 MIDDLEWARE = [
